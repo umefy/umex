@@ -1,5 +1,7 @@
 # umex
 
+`umex` is a command line tool for helping create umefy projects.
+
 ## install
 
 ```sh
