@@ -1,0 +1,35 @@
+run:
+  timeout: 3m  # Linter timeout, increase for large projects
+
+issues:
+  exclude-dirs:
+    - vendor
+    - generated
+  exclude-files:
+    - ".*\\.pb\\.go$"
+  fix: true
+
+linters:
+  enable-all: false  # Start with a curated set of linters
+  enable:
+    - govet          # Reports potential bugs
+    - staticcheck    # Advanced checks for bugs and performance issues
+    - errcheck       # Ensures all errors are checked
+    - ineffassign    # Detects unused variable assignments
+    - unused         # Finds unused code like functions or variables
+    - gosimple       # Simplifies code for readability and performance
+    - gocyclo        # Detect cyclomatic complexity
+    - goconst        # Detect repeated values that can be made constants
+    - unconvert      # Detects unnecessary conversions
+    - usestdlibvars  # Detects when standard library variables are used
+    - bodyclose      # Check whether HTTP response bodies are closed
+    - dupl           # Detects duplicate code
+    - revive         # A faster, stricter, configurable, extensible, and beautiful linter for Go
+
+linters-settings:
+  revive:
+    rules:
+      - name: unexported-return
+        disabled: true
+  goconst:
+    ignore-tests: true
