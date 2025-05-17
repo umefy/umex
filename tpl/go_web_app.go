@@ -85,7 +85,7 @@ func CreateGoWebApp(flagsModel flags.Model, projectDir string) error {
 	projectBaseDir := filepath.Base(projectDir)
 	if projectBaseDir != "." {
 		fmt.Printf("Please run %s to go to the project directory.\n", color.Green.Render(fmt.Sprintf("cd %s", projectBaseDir)))
-		fmt.Printf("Please %s to match with your own environment.\n", color.Green.Render("update envrc.example"))
+		fmt.Printf("Please %s to match with your own env variables and then %s.\n", color.Green.Render("update envrc.example"), color.Green.Render("rename it to .envrc"))
 	}
 	fmt.Printf("Then please run %s to setup the project.\n", color.Green.Render("./scripts/local_setup.sh"))
 	fmt.Printf("Once setup finish, you can run %s to start the project. 🚀\n", color.Green.Render("make"))
