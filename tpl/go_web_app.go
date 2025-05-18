@@ -111,7 +111,7 @@ func updateModuleImport(workingDir string, projectModuleName string) error {
 			ast.Inspect(f, func(n ast.Node) bool {
 				if imp, ok := n.(*ast.ImportSpec); ok {
 					if strings.Contains(imp.Path.Value, goWebAppDefaultModuleName) {
-						imp.Path.Value = strings.Replace(imp.Path.Value, goWebAppDefaultModuleName, projectModuleName, -1)
+						imp.Path.Value = strings.ReplaceAll(imp.Path.Value, goWebAppDefaultModuleName, projectModuleName)
 						updated = true
 					}
 				}
@@ -123,6 +123,7 @@ func updateModuleImport(workingDir string, projectModuleName string) error {
 				if err != nil {
 					return err
 				}
+				//nolint:errcheck
 				defer outFile.Close()
 
 				err = printer.Fprint(outFile, fset, f)
